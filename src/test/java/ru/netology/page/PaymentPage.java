@@ -2,6 +2,7 @@ package ru.netology.page;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import ru.netology.data.DataHelper;
 
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
@@ -19,14 +20,16 @@ public class PaymentPage {
     private SelenideElement errorNotification = $(withText("Ошибка! Банк отказал в проведении операции."));
 
 
-    public void putCardData(String cardNumber, String month, String year, String owner, String cvc) {
-        cardNumberField.setValue(cardNumber);
-        monthInputField.setValue(month);
-        yearInputField.setValue(year);
-        ownerField.setValue(owner);
-        cvcInputField.setValue(cvc);
+    public void putCardData(DataHelper.CardInfo info) {
+        cardNumberField.setValue(info.getCardNumber());
+        monthInputField.setValue(info.getMonth());
+        yearInputField.setValue(info.getYear());
+        ownerField.setValue(info.getOwner());
+        cvcInputField.setValue(info.getCvc());
         continueButton.click();
     }
 
 
+
 }
+

@@ -14,28 +14,25 @@ public class DataHelper {
     static Faker faker = new Faker(new Locale("en"));
 
     @Value
-    public static class CardNumber {
-        private String cardNumber;
-        private String status;
-    }
-
-    public static CardNumber approvedCardInfo() {
-
-        return new CardNumber("4444 4444 4444 4441", "APPROVED");
-    }
-
-    public static CardNumber declinedCardInfo() {
-
-        return new CardNumber("4444 4444 4444 4442", "DECLINED");
-    }
-
-    @Value
     public static class CardInfo {
-        private String month;
-        private String year;
-        private String cvc;
-        private String owner;
+        String cardNumber;
+        String month;
+        String year;
+        String cvc;
+        String owner;
+
     }
+
+    public static String getApprovedCardNumber() {
+
+        return ("4444 4444 4444 4441");
+    }
+
+    public static String getDeclinedCardNumber() {
+
+        return ("4444 4444 4444 4442");
+    }
+
 
     public static String generateRandomOwner() {
         return faker.name().firstName() + " " + faker.name().lastName();
@@ -48,7 +45,12 @@ public class DataHelper {
     public static String getRandomYear() {
         return faker.numerify("##");
     }
+
     public static String getRandomMonth() {
         return faker.numerify("##");
+    }
+
+    public static CardInfo getAcceptedUser() {
+        return new CardInfo(getApprovedCardNumber(), getRandomMonth(), getRandomYear(), generateRandomOwner(), getRandomCVC());
     }
 }

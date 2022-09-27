@@ -12,7 +12,7 @@ services:
       - MYSQL_PASSWORD=pass
 
   postgres:
-    image: postgres:latest
+    image: alpine
     restart: always
     ports:
       - "5432:5432"
