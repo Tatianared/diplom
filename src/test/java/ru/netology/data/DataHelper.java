@@ -28,13 +28,23 @@ public class DataHelper {
         return ("4444 4444 4444 4441");
     }
 
+    public static String getApprovedCardStatus() {
+        return "APPROVED";
+    }
+
+    public static String getDeclinedCardStatus() {
+        return "DECLINED";
+    }
+
     public static String getDeclinedCardNumber() {
 
         return ("4444 4444 4444 4442");
     }
 
-
-    public static String generateRandomOwner() {
+    public static String getRandomCardNumber() {
+        return faker.business().creditCardNumber();
+    }
+    public static String getRandomOwner() {
         return faker.name().firstName() + " " + faker.name().lastName();
     }
 
@@ -50,7 +60,7 @@ public class DataHelper {
         return faker.numerify("##");
     }
 
-    public static CardInfo getAcceptedUser() {
+    public static CardInfo getApprovedUser() {
         return new CardInfo(getApprovedCardNumber(), getRandomMonth(), getRandomYear(), generateRandomOwner(), getRandomCVC());
     }
 }

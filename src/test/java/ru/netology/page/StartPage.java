@@ -11,12 +11,15 @@ public class StartPage {
     private SelenideElement creditButton = $$("button").find(Condition.exactText("Купить в кредит"));
 
 
-    public static void openPaymentPage() {
+    public PaymentPage openPaymentPage() {
         cashButton.click();
+        return new PaymentPage();
     }
 
-    public void openCreditPage() {
+    public CreditPage openCreditPage() {
+
         creditButton.click();
+        return new CreditPage();
     }
 }
 

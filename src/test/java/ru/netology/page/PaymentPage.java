@@ -11,21 +11,21 @@ import static com.codeborne.selenide.Selenide.$$;
 public class PaymentPage {
     private SelenideElement heading = $$(".heading").find(Condition.exactText("Купить"));
     private SelenideElement cardNumberField = $("[placeholder='0000 0000 0000 0000']");
-    private SelenideElement monthInputField = $("[placeholder='08']");
-    private SelenideElement yearInputField = $("[placeholder='22']");
+    private SelenideElement monthField = $("[placeholder='08']");
+    private SelenideElement yearField = $("[placeholder='22']");
     private SelenideElement ownerField = $$(".input__top").find(Condition.exactText("Владелец"));
-    private SelenideElement cvcInputField = $("[placeholder='999']");
+    private SelenideElement cvcField = $("[placeholder='999']");
     private SelenideElement continueButton = $$("button").find(Condition.exactText("Продолжить"));
     private SelenideElement successNotification = $(withText("Операция одобрена Банком."));
     private SelenideElement errorNotification = $(withText("Ошибка! Банк отказал в проведении операции."));
 
 
-    public void putCardData(DataHelper.CardInfo info) {
-        cardNumberField.setValue(info.getCardNumber());
-        monthInputField.setValue(info.getMonth());
-        yearInputField.setValue(info.getYear());
-        ownerField.setValue(info.getOwner());
-        cvcInputField.setValue(info.getCvc());
+    public void putCardData(String cardNumber, String month, String year, String owner, String cvc) {
+        cardNumberField.setValue(cardNumber);
+        monthField.setValue(month);
+        yearField.setValue(year);
+        ownerField.setValue(owner);
+        cvcField.setValue(cvc);
         continueButton.click();
     }
 
